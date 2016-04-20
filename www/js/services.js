@@ -6,7 +6,7 @@ angular.module('geekShop')
       return $http.get(API_URL + path);
     },
     post: function (path, data) {
-      return $http.post(API_URL + path);
+      return $http.post(API_URL + path, data);
     },
     put: function (path) {
       return $http.put(API_URL + path);
@@ -26,10 +26,10 @@ angular.module('geekShop')
       return API.get('/products/' + id);
     },
     getComments: function (id) {
-      return API.get('/products/' + id + 'comments');
+      return API.get('/products/' + id + '/comments');
     },
     addComment: function (id, text) {
-      return API.post('/products/' + id + 'comments', { product_id: id, text: text });
+      return API.post('/products/' + id + '/comments', { product_id: id, text: text });
     }
   };
 });
