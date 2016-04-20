@@ -1,7 +1,7 @@
 <ion-view view-title="Products">
   <ion-content class="padding">
-    <p class="text-info" ng-show="loading">Loading products...</p>
-    <p class="text-info" ng-show="error">{{ error }}</p>
+    <p ng-show="loading">Loading products...</p>
+    <p ng-show="error">{{ error }}</p>
     <div class="list card" ng-repeat="product in products">
       <div class="item">
         <h2>{{ product.name }}</h2>
@@ -11,7 +11,7 @@
         <img ng-src="{{ product.image_url }}">
       </div>
 
-      <a class="item item-icon-left assertive" href="#">
+      <a class="item item-icon-left assertive" ui-sref="product({id: product.id})">
         <i class="icon ion-eye"></i>
         View Details
       </a>

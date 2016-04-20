@@ -22,6 +22,11 @@ angular.module('geekShop', ['ionic'])
     url: '/products',
     templateUrl: 'partials/products.html',
     controller: 'ProductsCtrl'
+  })
+  .state('product', {
+    url: '/products/{id}',
+    templateUrl: 'partials/product.html',
+    controller: 'ProductCtrl'
   });
 
   // if none of the above states are matched, use this as the fallback

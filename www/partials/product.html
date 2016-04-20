@@ -1,0 +1,36 @@
+<ion-view view-title="{{ product.name }}">
+  <ion-content class="padding">
+    <p ng-show="loading">Loading products...</p>
+    <p ng-show="error">{{ error }}</p>
+
+    <h1>{{ product.name }}</h1>
+
+    <div class="item item-image">
+      <img ng-src="{{ product.image_url }}">
+    </div>
+
+    <p class="padding">{{ product.description }}</p>
+
+    <div class="list">
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          {{ error_submitting }}
+          <input type="text" placeholder="Comment about this product" ng-model="text" required />
+        </label>
+        <button type="submit"
+                ng-click="postComment(product.id, text)"
+                class="button button-small button-balanced"
+                ng-disabled="!text || submitting">
+          Post comment
+        </button>
+      </div>
+      <p ng-show="loading_comments">Loading comments...</p>
+      <p ng-show="error_comments">{{ error_comments }}</p>
+      <li class="item comment" ng-repeat="comment in product.comments | orderBy:'-created_at'">
+        <blockquote>
+          {{ comment.text }}
+        </blockquote>
+      </li>
+    </div>
+  </ion-content>
+</ion-view>
